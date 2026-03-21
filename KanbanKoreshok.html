@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Канбан </title>
+	<style>
+        body {
+            background-color: lightyellow ;
+        }
+		textarea {
+			font-family: "Arial", sans-serif; /* Название шрифта */
+			font-size: 18px;                 /* Размер шрифта */
+			line-height: 1.2;                /* Межстрочный интервал */
+		}
+		div {
+			background-color: lightblue ;
+		}
+    </style>
+	<script src="index_db.js"></script>
+	<script src="code.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Канбан</h1>
+        <p name="stat" style="font-size: 18px;">Статистика: Срочные: 1 | Ожидают выполнения: 2 | Выполнены: 2</p>
+    </header>
+
+    <!-- Три столбца (табличная верстка для гарантированного отображения колонками) -->
+	<div name="create_task" style="padding: 5px;width: 35%;border: 3px solid black;">
+		<p><textarea class="tasktxt" style="resize: none;width: 100%; box-sizing: border-box;" rows="4"></textarea> </p>
+			<p>
+				<input class="newdate" type="date">
+				<button onclick="create_task()" class="btn">Добавить</button>
+			</p>
+	</div>
+    <table width="100%" cellpadding="15" cellspacing="7" border="0">
+        <tbody><tr valign="top">
+			<td width="5%">
+			</td>
+            <!-- Столбец 1 -->
+            <td width="30%" name="new_task_clm">
+                <h2 id="1">Задачи: 2</h2>
+				
+            <div name="new_task" id="dc32a965-95c1-43c5-8495-fdffe1bd4d6c" style="padding: 5px; border: 3px solid red;">
+					<p><textarea class="tasktxt" readonly="" style="resize: none;width: 100%; box-sizing: border-box;" rows="4">ЗАполнить!!!
+Журнал Умная продленка!
+</textarea> </p>
+					<p>
+						<input value="2026-03-21" readonly="" class="newdate" type="date">
+						<button onclick="take_task(this)" class="btn1">Взять задачу</button>
+						<button onclick="delete_task(this)" class="btn2">Удалить</button>						
+					</p>
+				</div></td>
+            
+            <!-- Столбец 2 -->
+            <td width="30%" name="todo_task_clm">
+                <h2 id="2">В работе: 1</h2>				
+            <div name="todo_task" id="e779c71b-3163-4ac8-9259-9ffa5d8fedf4" style="padding: 5px; border: 3px solid blue;">
+					<p><textarea class="tasktxt" readonly="" style="resize: none;width: 100%; box-sizing: border-box;" rows="4">Тест</textarea> </p>
+					<p>
+						<input value="" readonly="" class="newdate" type="date">
+						<button onclick="refuse_task(this)" class="btn1">Вернуть задачу</button>
+						<button onclick="complite_task(this)" class="btn2">Выполнить</button>						
+					</p>
+				</div><div name="todo_task" id="024bbe63-459b-4281-ab18-fe6b030f794b" style="padding: 5px;border: 3px solid #ccc;">
+					<p><textarea class="tasktxt" readonly="" style="resize: none;width: 100%; box-sizing: border-box;" rows="4">Постер с заполнением бланко рег. ОГЭ сделать 20 штук.
+</textarea> </p>
+					<p>
+						<input value="2026-03-27" readonly="" class="newdate" type="date">
+						<button onclick="refuse_task(this)" class="btn1">Вернуть задачу</button>
+						<button onclick="complite_task(this)" class="btn2">Выполнить</button>						
+					</p>
+				</div></td>
+            
+            <!-- Столбец 3 -->
+            <td width="30%" name="done_task_clm">
+                <h2 id="3">Выполнено: 2</h2>
+
+            <div name="done_task" id="3ada09e0-92ef-4563-abc6-1f5d6bfa15b3" style="padding: 5px;border: 3px solid green;">
+					<p><textarea class="tasktxt" readonly="" style="resize: none;width: 100%; box-sizing: border-box;" rows="4">Прикрутить оформление к канбану
+</textarea> </p>
+					<p>
+						<input value="" readonly="" class="newdate" type="date">
+						<button onclick="refuse_task(this)" class="btn1">Вернуть задачу</button>
+						<button onclick="delete_task(this)" class="btn2">Удалить</button>		
+						<input value="1774103197726" readonly="" class="cmpdate" type="hidden">
+					</p>
+				</div><div name="done_task" id="bd48498f-6325-4a11-a15f-98f7a76e1f2c" style="padding: 5px;border: 3px solid green;">
+					<p><textarea class="tasktxt" readonly="" style="resize: none;width: 100%; box-sizing: border-box;" rows="4">Сделать презу для Борцухи из примуса 9</textarea> </p>
+					<p>
+						<input value="2026-03-21" readonly="" class="newdate" type="date">
+						<button onclick="refuse_task(this)" class="btn1">Вернуть задачу</button>
+						<button onclick="delete_task(this)" class="btn2">Удалить</button>		
+						<input value="1774123718363" readonly="" class="cmpdate" type="hidden">
+					</p>
+				</div></td>
+			<td width="5%">
+			</td>
+        </tr>
+    </tbody></table>
+    <!-- Нижний колонтитул -->
+    <footer>
+        <hr>
+        <p>© 2026 EasyKanban by @Koreshok95 Solutions</p>
+		<button name="save" onclick="saveToFile()">Save</button>
+    </footer>
+	<script>
+	init_on_load_done();
+	</script>
+
+</body></html>
